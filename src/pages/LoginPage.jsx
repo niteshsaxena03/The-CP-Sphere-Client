@@ -1,6 +1,7 @@
 import "../index.css"; // Ensure the path is correct
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Spline from "@splinetool/react-spline";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -13,14 +14,18 @@ const LoginPage = () => {
   const handleLogin = () => {
     console.log("Email:", email);
     console.log("Password:", password);
-
-   
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-black">
+    <div className="flex min-h-screen bg-black">
+      {/* Spline Animation */}
+
+      <div className="w-3/5 hidden sm:block h-full relative">
+        <Spline scene="https://prod.spline.design/WGLaTg7I4Nz0dN2N/scene.splinecode" />
+      </div>
+
       {/* Login Card */}
-      <div className="bg-gray-900 p-10 rounded-lg shadow-lg w-full max-w-md">
+      <div className="bg-gray-900 p-10 rounded-lg shadow-lg w-full max-w-md m-auto sm:w-2/5">
         <h2 className="text-4xl font-bold text-white mb-6 text-center">
           Login
         </h2>

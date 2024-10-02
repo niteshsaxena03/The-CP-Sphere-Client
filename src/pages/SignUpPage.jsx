@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Spline from "@splinetool/react-spline";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -8,9 +9,7 @@ const SignUpPage = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [platform, setPlatform] = useState("");
   const [experienceLevel, setExperienceLevel] = useState("");
-  const [favoriteAlgo, setFavoriteAlgo] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,16 +18,17 @@ const SignUpPage = () => {
       fullName,
       email,
       password,
-      platform,
       experienceLevel,
-      favoriteAlgo,
     });
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-black ">
+      <div className="hidden sm:block w-2/5 h-screen mb-20">
+        <Spline scene="https://prod.spline.design/nn-BixGMAPZYBdcr/scene.splinecode" />
+      </div>
       {/* Sign Up Card */}
-      <div className="bg-gray-900 p-10 rounded-lg shadow-lg w-full max-w-md m-10">
+      <div className="bg-gray-900 p-10 rounded-lg shadow-lg w-full max-w-md m-10 sm:w-3/5">
         <h2 className="text-4xl font-bold text-white mb-6 text-center">
           Sign Up
         </h2>
