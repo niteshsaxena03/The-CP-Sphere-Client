@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Spline from "@splinetool/react-spline";
+import { useFirebase } from "../Firebase/firebaseContext";
+import api from "../axios"; // Assuming this is your axios instance
 
 const SignUpPage = () => {
   const navigate = useNavigate();
@@ -11,15 +13,40 @@ const SignUpPage = () => {
   const [password, setPassword] = useState("");
   const [experienceLevel, setExperienceLevel] = useState("");
 
-  const handleSubmit = (e) => {
+  const { signUpUserWithEmailAndPassword, isLoggedIn, user } = useFirebase();
+
+  useEffect(() => {
+    // Check if the user is logged in and navigate accordingly
+    if (isLoggedIn) {
+      navigate("/home");
+    }
+  }, [isLoggedIn, user]); // Add dependencies
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your form submission logic here
-    console.log({
-      fullName,
-      email,
-      password,
-      experienceLevel,
-    });
+
+    try {
+      // Sign up the user using Firebase
+      const userCredential = await signUpUserWithEmailAndPassword(
+        email,
+        password
+      );
+      
+      const firebaseUser = userCredential.user;
+
+      // Send user data to the server for storing in MongoDB
+      await api.post("/api/v1/users/signup", {
+        // Change the endpoint to match your server
+        fullName,
+        email: firebaseUser.email, // Use email from Firebase response
+        experienceLevel,
+        firebaseUid: firebaseUser.uid, // Store Firebase UID for later reference
+      });
+
+      console.log("Signup successful and data saved in MongoDB");
+    } catch (error) {
+      console.error("Error during signup or saving to MongoDB:", error);
+    }
   };
 
   return (
