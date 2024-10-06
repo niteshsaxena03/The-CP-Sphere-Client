@@ -7,9 +7,10 @@ import { useFirebase } from "../Firebase/firebaseContext";
 const LoginPage = () => {
   const navigate = useNavigate();
 
-  // State to store email and password inputs
+  // State to store email, password, and error messages
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(""); // New state for error messages
 
   const { loginUserWithEmailAndPassword, isLoggedIn } = useFirebase();
 
@@ -31,9 +32,11 @@ const LoginPage = () => {
         console.log("Login Successful");
         navigate("/home"); // Redirect to home on successful login
       } else {
+        setError("Invalid email or password."); // Set error message if login fails
         console.log("Login Failed");
       }
     } catch (error) {
+      setError("Invalid email or password."); // Set error message if there's an error
       console.error("Login error:", error);
     }
   };
@@ -50,6 +53,13 @@ const LoginPage = () => {
         <h2 className="text-4xl font-bold text-white mb-6 text-center">
           Login
         </h2>
+
+        {/* Error Message */}
+        {error && (
+          <div className="bg-red-500 text-white p-3 rounded mb-4 text-center">
+            {error}
+          </div>
+        )}
 
         {/* Email Input */}
         <div className="mb-4">

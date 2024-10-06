@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Spline from "@splinetool/react-spline";
 
 const ContestReminders = () => {
   const [timeLeft, setTimeLeft] = useState("");
@@ -96,59 +97,62 @@ const ContestReminders = () => {
   }, []);
 
   return (
-    <div className="bg-black min-h-screen p-5 md:p-10 flex flex-col items-center">
-      <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-8 w-full max-w-lg text-center border border-green-500">
-        <h1 className="text-4xl font-bold text-green-400 mb-4">
-          Contest Reminders
-        </h1>
-      </div>
+    <div className="flex flex-col min-h-screen bg-black">
+      {/* Left: Contest Reminders */}
+      <div className="p-5 md:p-10 flex flex-col items-center">
+        <div className="bg-gray-800 p-6 rounded-lg shadow-lg mb-8 w-full text-center border border-green-500">
+          <h1 className="text-4xl font-bold text-green-400 mb-4">
+            Contest Reminders
+          </h1>
+        </div>
 
-      {contestDetails.length > 0 ? (
-        contestDetails.map((contest, index) => {
-          const [hours, minutes] = contest.time.split(":").map(Number);
-          const contestDateTime = new Date(
-            new Date().getFullYear(),
-            new Date().getMonth(),
-            new Date().getDate(),
-            hours,
-            minutes,
-            0
-          );
-          const now = new Date();
-
-          // Calculate the time difference for display
-          const timeDiff = contestDateTime - now;
-
-          // Only display contests that haven't happened yet
-          if (timeDiff > 0) {
-            return (
-              <div
-                key={index}
-                className="bg-gray-700 p-6 rounded-lg shadow-lg w-full max-w-lg mb-4 text-center transition-transform transform hover:scale-105"
-              >
-                <h2 className="text-2xl font-semibold text-white mb-2">
-                  {contest.name}
-                </h2>
-                <p className="text-white mb-4">
-                  Next Contest: {contest.day} at {contest.time}
-                </p>
-                <p className="text-lg text-yellow-400">{timeLeft}</p>
-                <a
-                  href={contest.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-green-600 hover:bg-green-650 text-white p-2 rounded mt-4 inline-block"
-                >
-                  Visit Contest Page
-                </a>
-              </div>
+        {contestDetails.length > 0 ? (
+          contestDetails.map((contest, index) => {
+            const [hours, minutes] = contest.time.split(":").map(Number);
+            const contestDateTime = new Date(
+              new Date().getFullYear(),
+              new Date().getMonth(),
+              new Date().getDate(),
+              hours,
+              minutes,
+              0
             );
-          }
-          return null; // Do not render anything for past contests
-        })
-      ) : (
-        <p className="text-white">No contests are scheduled for today.</p>
-      )}
+            const now = new Date();
+
+            // Calculate the time difference for display
+            const timeDiff = contestDateTime - now;
+
+            // Only display contests that haven't happened yet
+            if (timeDiff > 0) {
+              return (
+                <div
+                  key={index}
+                  className="bg-gray-700 p-6 rounded-lg shadow-lg w-full mb-4 text-center transition-transform transform hover:scale-105"
+                >
+                  <h2 className="text-2xl font-semibold text-white mb-2">
+                    {contest.name}
+                  </h2>
+                  <p className="text-white mb-4">
+                    Next Contest: Today at {contest.time}
+                  </p>
+                  <p className="text-lg text-yellow-400">{timeLeft}</p>
+                  <a
+                    href={contest.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-green-600 hover:bg-green-650 text-white p-2 rounded mt-4 inline-block"
+                  >
+                    Visit Contest Page
+                  </a>
+                </div>
+              );
+            }
+            return null; // Do not render anything for past contests
+          })
+        ) : (
+          <p className="text-white">No contests are scheduled for today.</p>
+        )}
+      </div>
     </div>
   );
 };
