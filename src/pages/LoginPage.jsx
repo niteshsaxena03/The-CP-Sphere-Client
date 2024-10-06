@@ -1,7 +1,8 @@
 import "../index.css"; // Ensure the path is correct
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Spline from "@splinetool/react-spline";
+import { useFirebase } from "../Firebase/firebaseContext";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -10,18 +11,36 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  
+  const { loginUserWithEmailAndPassword, isLoggedIn } = useFirebase();
+
+  // Redirect if user is already logged in
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/home");
+    }
+  }, [isLoggedIn, navigate]);
 
   // Function to handle form submission
-  const handleLogin = () => {
-    console.log("Email:", email);
-    console.log("Password:", password);
+  const handleLogin = async (e) => {
+    e.preventDefault(); // Prevent default form submission
+
+    try {
+      const result = await loginUserWithEmailAndPassword(email, password);
+
+      if (result) {
+        console.log("Login Successful");
+        navigate("/home"); // Redirect to home on successful login
+      } else {
+        console.log("Login Failed");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+    }
   };
 
   return (
     <div className="flex min-h-screen bg-black">
       {/* Spline Animation */}
-
       <div className="w-3/5 hidden sm:block h-full relative">
         <Spline scene="https://prod.spline.design/WGLaTg7I4Nz0dN2N/scene.splinecode" />
       </div>
