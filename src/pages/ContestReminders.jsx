@@ -150,7 +150,7 @@ const ContestReminders = () => {
             return null; // Do not render anything for past contests
           })
         ) : (
-          <p className="text-white">No contests are scheduled for today.</p>
+          <p className="text-white font-bold text-3xl">No contests are scheduled for today.</p>
         )}
       </div>
     </div>
