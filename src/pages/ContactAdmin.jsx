@@ -1,4 +1,3 @@
-
 import ContactCard from "../components/ContactCard.jsx"; // Import the ContactCard component
 
 const ContactAdmin = () => {
