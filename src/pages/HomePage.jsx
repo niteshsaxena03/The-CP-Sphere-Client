@@ -1,4 +1,7 @@
 import CardComponent from "../components/CardComponent";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useFirebase } from "../Firebase/firebaseContext";
 
 const HomePage = () => {
   const cardData = [

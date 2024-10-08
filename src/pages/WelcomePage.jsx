@@ -1,9 +1,19 @@
 import "../index.css"; // Ensure the path is correct
 import { useNavigate } from "react-router-dom";
 import Spline from "@splinetool/react-spline";
+import { useFirebase } from "../Firebase/firebaseContext";
+import { useEffect } from "react";
 
 const WelcomePage = () => {
   const navigate = useNavigate();
+
+  const { isLoggedIn } = useFirebase();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/home");
+    }
+  }, [isLoggedIn, navigate]);
 
   return (
     <div className="flex min-h-screen bg-black">
