@@ -5,9 +5,18 @@ import SectionHeading from "../components/CPTemplateHeading";
 const CPResources = () => {
   // Topic arrays for each section with href
   const numberTheoryTopics = [
-    { title: "GCD", href: "/gcd" },
-    { title: "LCM", href: "/lcm" },
-    { title: "Sieve of Eratosthenes", href: "/sieve" },
+    {
+      title: "GCD",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Number%20Thoery/GCD",
+    },
+    {
+      title: "LCM",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Number%20Thoery/LCM",
+    },
+    {
+      title: "Sieve of Eratosthenes",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Number%20Thoery/Sieve%20of%20Eratosthenes",
+    },
   ];
 
   const graphAlgorithmsTopics = [
@@ -23,7 +32,10 @@ const CPResources = () => {
       title: "Floyd-Warshall Algorithm",
       href: "https://github.com/Priyansh19077/CP-Templates/blob/master/Graph%20Algorithms/FloydWarshall.cpp",
     },
-    { title: "Prim's Algorithm", href: "/prim" },
+    {
+      title: "Prim's Algorithm",
+      href: "https://github.com/Priyansh19077/CP-Templates/blob/master/Graph%20Algorithms/Prims.cpp",
+    },
     {
       title: "Kruskal's Algorithm",
       href: "https://github.com/striver79/Competitive_Codes-/blob/master/kruskal.cpp",
@@ -36,35 +48,113 @@ const CPResources = () => {
       title: "Cycle Detection",
       href: "https://github.com/striver79/Competitive_Codes-/blob/master/toposort.cpp",
     },
-    { title: "Kosaraju Algorithm", href: "" },
+    {
+      title: "Kosaraju Algorithm",
+      href: "https://github.com/Priyansh19077/CP-Templates/blob/master/Graph%20Algorithms/4.KosaRaju_Algo_SCC.cpp",
+    },
+    {
+      title: "Disjoint Set Union",
+      href: "https://github.com/Priyansh19077/CP-Templates/blob/master/Graph%20Algorithms/4.KosaRaju_Algo_SCC.cpp",
+    },
   ];
 
   const modularArithmeticTopics = [
-    { title: "Modular Addition", href: "/modular-addition" },
-    { title: "Modular Subtraction", href: "/modular-subtraction" },
-    { title: "Modular Multiplication", href: "/modular-multiplication" },
-    { title: "Modular Division", href: "/modular-division" },
-    { title: "Modular Exponentiation", href: "/modular-exponentiation" },
-    { title: "Extended GCD", href: "/extended-gcd" },
-    { title: "nCr", href: "/ncr" },
-    { title: "nPr", href: "/npr" },
-    { title: "inverseModulo", href: "/inverse-modulo" },
+    {
+      title: "Modular Addition",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Modular%20Arithmetic/Modular%20addition",
+    },
+    {
+      title: "Modular Subtraction",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Modular%20Arithmetic/Modular%20Substraction",
+    },
+    {
+      title: "Modular Multiplication",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Modular%20Arithmetic/Modular%20multiplication",
+    },
+    {
+      title: "Modular Division",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Modular%20Arithmetic/Modular%20Division",
+    },
+    {
+      title: "Modular Exponentiation",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Modular%20Arithmetic/Modular%20Exponentiation",
+    },
+    {
+      title: "Extended GCD",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Modular%20Arithmetic/Extended%20GCD",
+    },
+    {
+      title: "nCr",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Modular%20Arithmetic/nCr",
+    },
+    {
+      title: "nPr",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Modular%20Arithmetic/nPr",
+    },
+    {
+      title: "Inverse Modulo",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Modular%20Arithmetic/Inverse%20Modulo",
+    },
   ];
 
   const bitManipulationTopics = [
-    { title: "Set Bits", href: "/set-bits" },
-    { title: "Bit Parity", href: "/bit-parity" },
-    { title: "Leading Zero Bits", href: "/leading-zero-bits" },
-    { title: "Trailing Zero Bits", href: "/trailing-zero-bits" },
-    { title: "First Set Bit", href: "/first-set-bit" },
-    { title: "Last Set Bit", href: "/last-set-bit" },
-    { title: "Decimal to Binary Conversion", href: "/decimal-to-binary" },
-    { title: "Binary to Decimal Conversion", href: "/binary-to-decimal" },
-    { title: "31-Bit Binary String Representation", href: "/31-bit-binary" },
-    { title: "Check if Bit is Set", href: "/check-if-bit-set" },
-    { title: "Setting a Bit", href: "/setting-a-bit" },
-    { title: "Unsetting a Bit", href: "/unsetting-a-bit" },
-    { title: "Toggling a Bit", href: "/toggling-a-bit" },
+    {
+      title: "Set Bits",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Bit%20Manipulation/Set%20Bits",
+    },
+    {
+      title: "Bit Parity",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Bit%20Manipulation/Bit%20Parity",
+    },
+    {
+      title: "Leading Zero Bits",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Bit%20Manipulation/Leading%20Zero%20Bits",
+    },
+    {
+      title: "Trailing Zero Bits",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Bit%20Manipulation/Trailing%20Zero%20Bits",
+    },
+    {
+      title: "First Set Bit",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Bit%20Manipulation/First%20Set%20Bit",
+    },
+    {
+      title: "Last Set Bit",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Bit%20Manipulation/Last%20Set%20Bit",
+    },
+    {
+      title: "Decimal to Binary Conversion",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Bit%20Manipulation/Decimal%20to%20Binary",
+    },
+    {
+      title: "Binary to Decimal Conversion",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Bit%20Manipulation/Binary%20to%20Decimal",
+    },
+    {
+      title: "Check power of 2",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Bit%20Manipulation/Check%20Power%20of%20Two",
+    },
+
+    {
+      title: "31-Bit Binary String Representation",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Bit%20Manipulation/Decimal%20to%20Binary%2031%20bits",
+    },
+    {
+      title: "Check if Bit is Set",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Bit%20Manipulation/Check%20if%20a%20bit%20is%20set%20or%20not",
+    },
+    {
+      title: "Setting a Bit",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Bit%20Manipulation/Setting%20a%20particular%20bit",
+    },
+    {
+      title: "Unsetting a Bit",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Bit%20Manipulation/Unsetting%20a%20bit",
+    },
+    {
+      title: "Toggling a Bit",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Bit%20Manipulation/Toggling%20a%20bit",
+    },
   ];
 
   const treeAlgorithmsTopics = [
