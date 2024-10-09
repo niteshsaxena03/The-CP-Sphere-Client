@@ -15,12 +15,28 @@ const CPResources = () => {
       title: "Dijkstra's Algorithm",
       href: "https://github.com/Priyansh19077/CP-Templates/blob/master/Graph%20Algorithms/Dijkstra.cpp",
     },
-    { title: "Bellman-Ford Algorithm", href: "/bellman-ford" },
-    { title: "Floyd-Warshall Algorithm", href: "/floyd-warshall" },
+    {
+      title: "Bellman-Ford Algorithm",
+      href: "https://github.com/Priyansh19077/CP-Templates/blob/master/Graph%20Algorithms/BellmanFord.cpp",
+    },
+    {
+      title: "Floyd-Warshall Algorithm",
+      href: "https://github.com/Priyansh19077/CP-Templates/blob/master/Graph%20Algorithms/FloydWarshall.cpp",
+    },
     { title: "Prim's Algorithm", href: "/prim" },
-    { title: "Kruskal's Algorithm", href: "/kruskal" },
-    { title: "Topological Sorting", href: "/topological-sorting" },
-    { title: "Cycle Detection", href: "/cycle-detection" },
+    {
+      title: "Kruskal's Algorithm",
+      href: "https://github.com/striver79/Competitive_Codes-/blob/master/kruskal.cpp",
+    },
+    {
+      title: "Topological Sorting",
+      href: "https://github.com/striver79/Competitive_Codes-/blob/master/toposort.cpp",
+    },
+    {
+      title: "Cycle Detection",
+      href: "https://github.com/striver79/Competitive_Codes-/blob/master/toposort.cpp",
+    },
+    { title: "Kosaraju Algorithm", href: "" },
   ];
 
   const modularArithmeticTopics = [
@@ -52,31 +68,68 @@ const CPResources = () => {
   ];
 
   const treeAlgorithmsTopics = [
-    { title: "Binary Lifting", href: "/binary-lifting" },
-    { title: "Heavy-Light Decomposition (HLD)", href: "/hld" },
-    { title: "Lowest Common Ancestor (LCA)", href: "/lca" },
+    {
+      title: "Binary Lifting",
+      href: "https://github.com/Priyansh19077/CP-Templates/blob/master/Tree%20Algorithms/Binary_Lifting.cpp",
+    },
+    {
+      title: "Heavy-Light Decomposition (HLD)",
+      href: "https://github.com/Priyansh19077/CP-Templates/blob/master/Tree%20Algorithms/HLD.cpp",
+    },
+    {
+      title: "Lowest Common Ancestor (LCA)",
+      href: "https://github.com/Priyansh19077/CP-Templates/blob/master/Tree%20Algorithms/LCA_tree.cpp",
+    },
     {
       title: "Tree Centroid Decomposition",
-      href: "/tree-centroid-decomposition",
+      href: "https://github.com/Priyansh19077/CP-Templates/blob/master/Tree%20Algorithms/Centroid_Tree.cpp",
     },
   ];
 
   const rangeQueryTopics = [
-    { title: "Segment Tree", href: "/segment-tree" },
-    { title: "Fenwick Tree", href: "/fenwick-tree" },
-    { title: "Lazy Propagation", href: "/lazy-propagation" },
-    { title: "Square Root Decomposition", href: "/square-root-decomposition" },
-    { title: "Sparse Table", href: "/sparse-table" },
+    {
+      title: "Segment Tree",
+      href: "https://github.com/Priyansh19077/CP-Templates/blob/master/Range%20Queries/Segment_tree.cpp",
+    },
+    {
+      title: "Lazy Propagation",
+      href: "https://github.com/Priyansh19077/CP-Templates/blob/master/Range%20Queries/Lazy_SGT.cpp",
+    },
+    {
+      title: "Mo's Algorithm",
+      href: "https://github.com/Priyansh19077/CP-Templates/blob/master/Range%20Queries/Mo_algo.cpp",
+    },
+    {
+      title: "Sparse Table",
+      href: "https://github.com/Priyansh19077/CP-Templates/blob/master/Range%20Queries/Sparse_Table.cpp",
+    },
   ];
 
   const stringMatchingTopics = [
-    { title: "KMP Algorithm", href: "/kmp" },
-    { title: "Rabin-Karp Algorithm", href: "/rabin-karp" },
-    { title: "Boyer-Moore Algorithm", href: "/boyer-moore" },
-    { title: "Z Algorithm", href: "/z-algorithm" },
-    { title: "Suffix Array", href: "/suffix-array" },
-    { title: "Prefix Function", href: "/prefix-function" },
-    { title: "String Hashing", href: "/string-hashing" },
+    {
+      title: "KMP Algorithm",
+      href: "https://github.com/striver79/Competitive_Codes-/blob/master/kmp.cpp",
+    },
+    {
+      title: "Rabin-Karp Algorithm",
+      href: "https://github.com/striver79/Competitive_Codes-/blob/master/rabin_karp.cpp",
+    },
+    {
+      title: "Z Algorithm",
+      href: "https://github.com/Priyansh19077/CP-Templates/blob/master/String%20Algorithms/ZAlgirthm.cpp",
+    },
+    {
+      title: "Suffix Array",
+      href: "https://github.com/Priyansh19077/CP-Templates/blob/master/String%20Algorithms/Suffix_array.cpp",
+    },
+    {
+      title: "Prefix Function",
+      href: "https://github.com/Priyansh19077/CP-Templates/blob/master/String%20Algorithms/Prefix_Function.cpp",
+    },
+    {
+      title: "String Hashing",
+      href: "https://github.com/Priyansh19077/CP-Templates/blob/master/String%20Algorithms/String_Hashing.cpp",
+    },
   ];
 
   return (
