@@ -17,6 +17,19 @@ const CPResources = () => {
       title: "Sieve of Eratosthenes",
       href: "https://github.com/niteshsaxena03/CP/blob/main/Number%20Thoery/Sieve%20of%20Eratosthenes",
     },
+    {
+      title: "nCr",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Modular%20Arithmetic/nCr",
+    },
+    {
+      title: "nPr",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Modular%20Arithmetic/nPr",
+    },
+    {
+      title: "Binary exponentiation",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Number%20Thoery/Binary%20Exponentiation",
+    },
+   
   ];
 
   const graphAlgorithmsTopics = [
@@ -84,16 +97,12 @@ const CPResources = () => {
       href: "https://github.com/niteshsaxena03/CP/blob/main/Modular%20Arithmetic/Extended%20GCD",
     },
     {
-      title: "nCr",
-      href: "https://github.com/niteshsaxena03/CP/blob/main/Modular%20Arithmetic/nCr",
-    },
-    {
-      title: "nPr",
-      href: "https://github.com/niteshsaxena03/CP/blob/main/Modular%20Arithmetic/nPr",
-    },
-    {
       title: "Inverse Modulo",
       href: "https://github.com/niteshsaxena03/CP/blob/main/Modular%20Arithmetic/Inverse%20Modulo",
+    },
+    {
+      title: "nCr using MOD",
+      href: "https://github.com/niteshsaxena03/CP/blob/main/Modular%20Arithmetic/nCr%20using%20mod",
     },
   ];
 
