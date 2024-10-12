@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import Spline from "@splinetool/react-spline";
 import Heading from "../components/HeadingComponent";
 
 const ContestReminders = () => {
-  const [timeLeft, setTimeLeft] = useState("");
+  const [timeLeft, setTimeLeft] = useState({});
   const [contestDetails, setContestDetails] = useState([]);
 
   // Function to check for contests today
   const checkContests = () => {
     const today = new Date();
     const dayName = today.toLocaleString("en-US", { weekday: "long" });
+    const date = today.getDate();
 
     // Define contests and their timings
     const contests = [
@@ -17,30 +17,42 @@ const ContestReminders = () => {
         name: "LeetCode Contest",
         day: "Sunday",
         time: "08:00:00",
-        link: "https://leetcode.com/contest/", // Replace with actual link
+        link: "https://leetcode.com/contest/",
+      },
+      {
+        name: "LeetCode Biweekly Contest",
+        day: "Saturday",
+        time: "20:00:00",
+        link: "https://leetcode.com/contest/",
+        condition: (date) => [2, 4].includes(Math.ceil(date / 7)), // Check if it's the 2nd or 4th Saturday
       },
       {
         name: "GeeksforGeeks Contest",
         day: "Sunday",
         time: "19:00:00",
-        link: "https://www.geeksforgeeks.org/events/rec/gfg-weekly-coding-contest", // Replace with actual link
+        link: "https://www.geeksforgeeks.org/events/rec/gfg-weekly-coding-contest",
       },
       {
         name: "AtCoder Beginner Contest",
         day: "Saturday",
         time: "17:30:00",
-        link: "https://atcoder.jp/contests/", // Replace with actual link
+        link: "https://atcoder.jp/contests/",
       },
       {
         name: "CodeChef Contest",
         day: "Wednesday",
         time: "20:00:00",
-        link: "https://www.codechef.com/contests", // Replace with actual link
+        link: "https://www.codechef.com/contests",
       },
     ];
 
-    // Check for today's contests
-    const todayContests = contests.filter((contest) => contest.day === dayName);
+    // Filter today's contests and special 2nd/4th Saturday LeetCode contests
+    const todayContests = contests.filter(
+      (contest) =>
+        contest.day === dayName &&
+        (!contest.condition || contest.condition(date))
+    );
+
     setContestDetails(todayContests);
 
     // Start countdown for upcoming contests
@@ -60,22 +72,28 @@ const ContestReminders = () => {
       const timeDiff = contestDateTime - now;
 
       if (timeDiff > 0) {
-        startCountdown(timeDiff, contest);
+        startCountdown(timeDiff, contest.name);
       }
     });
   };
 
   // Function to start the countdown
-  const startCountdown = (timeDiff) => {
+  const startCountdown = (timeDiff, contestName) => {
     const countdownInterval = setInterval(() => {
-      setTimeLeft(formatTime(timeDiff));
+      setTimeLeft((prevTime) => ({
+        ...prevTime,
+        [contestName]: formatTime(timeDiff),
+      }));
 
       // Update timeDiff for next interval
       timeDiff -= 1000; // Decrease by 1 second
 
       if (timeDiff < 0) {
         clearInterval(countdownInterval);
-        setTimeLeft("00:00:00");
+        setTimeLeft((prevTime) => ({
+          ...prevTime,
+          [contestName]: "00:00:00",
+        }));
       }
     }, 1000);
   };
@@ -99,8 +117,6 @@ const ContestReminders = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-black w-full">
-      {/* Left: Contest Reminders */}
-
       <Heading title="Contest Reminders" />
 
       {contestDetails.length > 0 ? (
@@ -132,7 +148,9 @@ const ContestReminders = () => {
                 <p className="text-white mb-4">
                   Next Contest: Today at {contest.time}
                 </p>
-                <p className="text-lg text-yellow-400">{timeLeft}</p>
+                <p className="text-lg text-yellow-400">
+                  {timeLeft[contest.name]}
+                </p>
                 <a
                   href={contest.link}
                   target="_blank"

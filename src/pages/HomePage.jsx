@@ -11,12 +11,7 @@ const HomePage = () => {
         "Stay updated with all upcoming contests. Get timely reminders and notifications to ensure you never miss an opportunity to participate in exciting challenges and competitions.",
       route: "/contest-reminders",
     },
-    {
-      title: "User Profile",
-      description:
-        "Access and manage your personal information effortlessly. Update your details, view your activity history, and customize your preferences to enhance your experience on our platform.",
-      route: "/user-profile",
-    },
+
     {
       title: "List of Unsolved Questions",
       description:
