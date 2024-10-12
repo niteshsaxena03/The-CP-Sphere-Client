@@ -2,7 +2,7 @@ import React from "react";
 
 const ResourceCard = ({ topic, resources }) => {
   return (
-    <div className="bg-gray-900  text-white rounded-lg p-8 mx-20 border border-blue-400 flex mb-8 flex-col sm:flex-row justify-between items-center shadow-lg">
+    <div className="bg-gray-900  text-white rounded-lg p-8 md:mx-20 border border-blue-400 flex mb-8 flex-col sm:flex-row justify-between items-center shadow-lg">
       {/* Topic Name */}
       <h3 className="text-3xl sm:text-5xl font-serif sm:w-1/2 text-center sm:text-left mb-6 sm:mb-0 text-blue-300">
         {topic}
