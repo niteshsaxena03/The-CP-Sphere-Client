@@ -9,9 +9,10 @@ import UserProfile from "./pages/UserProfile";
 import UnsolvedQuestions from "./pages/UnsolvedQuestions";
 import CPResources from "./pages/CPResources";
 import DiscussionForum from "./pages/DiscussionForum";
-import RankList from "./pages/RankList";
+
 import ContactAdmin from "./pages/ContactAdmin";
 import CPLearningResources from "./pages/CPLearningResources";
+import CPPracticeResources from "./pages/CPPracticeResources";
 
 function App() {
   return (
@@ -24,9 +25,9 @@ function App() {
       <Route path="/user-profile" element={<UserProfile />} />
       <Route path="/unsolved-questions" element={<UnsolvedQuestions />} />
       <Route path="/cp-resources" element={<CPResources />} />
-      <Route path="/dsa-resources" element={<CPLearningResources />} />
+      <Route path="/cp-learning-resources" element={<CPLearningResources />} />
       <Route path="/discussion-forum" element={<DiscussionForum />} />
-      <Route path="/rank-list" element={<RankList />} />
+      <Route path="/practice" element={<CPPracticeResources />} />
       <Route path="/contact-admin" element={<ContactAdmin />} />
     </Routes>
   );

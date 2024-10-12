@@ -33,7 +33,13 @@ const HomePage = () => {
       title: "CP Learning Resources",
       description:
         "Access a variety of Competitive Programming resources. These resources will bolster your understanding and application of CP concepts.",
-      route: "/dsa-resources",
+      route: "/cp-learning-resources",
+    },
+    {
+      title: "CP Practice Resources",
+      description:
+        "Explore CP Practice Resources for a collection of diverse practice questions. Strengthen your competitive programming skills and improve your problem-solving abilities with challenging exercises.",
+      route: "/practice",
     },
     {
       title: "Discussion Forum",
@@ -41,12 +47,7 @@ const HomePage = () => {
         "Join our vibrant community discussion forum. Engage with fellow programmers, ask questions, share knowledge, and collaborate on problems to improve your skills.",
       route: "/discussion-forum",
     },
-    {
-      title: "Rank List",
-      description:
-        "Check out the rank list to see where you stand among your peers. Track your progress and strive to improve your competitive programming skills with friendly competition.",
-      route: "/rank-list",
-    },
+
     {
       title: "Contact Admin",
       description:
