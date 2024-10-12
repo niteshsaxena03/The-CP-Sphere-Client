@@ -103,7 +103,7 @@ const SignUpPage = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)} // Update password state
             className="w-full p-3 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-sky-900"
-            placeholder="Enter your password"
+            placeholder="Enter password (minimum 6 letters)"
             required
           />
         </div>
