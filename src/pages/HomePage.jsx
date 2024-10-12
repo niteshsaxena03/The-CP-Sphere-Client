@@ -1,9 +1,19 @@
-import CardComponent from "../components/CardComponent";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // Changed to useNavigate
+import CardComponent from "../components/CardComponent";
 import { useFirebase } from "../Firebase/firebaseContext";
 
 const HomePage = () => {
+  const navigate = useNavigate(); // Use useNavigate instead of useNavigation
+  const { logOut, isLoggedIn } = useFirebase();
+
+  // Redirect to welcome page if not logged in
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/"); // Change to your actual welcome page route
+    }
+  }, [isLoggedIn, navigate]);
+
   const cardData = [
     {
       title: "Contest Reminders",
@@ -11,7 +21,6 @@ const HomePage = () => {
         "Stay updated with all upcoming contests. Get timely reminders and notifications to ensure you never miss an opportunity to participate in exciting challenges and competitions.",
       route: "/contest-reminders",
     },
-
     {
       title: "List of Unsolved Questions",
       description:
@@ -30,14 +39,12 @@ const HomePage = () => {
         "Access a variety of Competitive Programming resources. These resources will bolster your understanding and application of CP concepts.",
       route: "/cp-learning-resources",
     },
-
     {
       title: "Discussion Forum",
       description:
         "Join our vibrant community discussion forum. Engage with fellow programmers, ask questions, share knowledge, and collaborate on problems to improve your skills.",
       route: "/discussion-forum",
     },
-
     {
       title: "Contact Admin",
       description:
@@ -60,7 +67,7 @@ const HomePage = () => {
       </div>
 
       {/* Card Grid */}
-      <div className="grid grid-cols-1  gap-6 w-full max-w-4xl">
+      <div className="grid grid-cols-1 gap-6 w-full max-w-4xl">
         {cardData.map((card, index) => (
           <CardComponent
             key={index}
@@ -69,6 +76,16 @@ const HomePage = () => {
             route={card.route}
           />
         ))}
+      </div>
+
+      {/* Logout Button */}
+      <div className="mt-8 w-full max-w-xs">
+        <button
+          onClick={logOut}
+          className="bg-red-600 hover:bg-red-700 text-white py-2 px-6 rounded-lg text-lg font-bold transition duration-200 w-full"
+        >
+          Logout
+        </button>
       </div>
     </div>
   );
