@@ -30,9 +30,9 @@ const HomePage = () => {
       route: "/cp-resources",
     },
     {
-      title: "CP Resources",
+      title: "CP Learning Resources",
       description:
-        "Access a variety of Data Structures and Algorithms resources. From in-depth guides to practice problems, these resources will bolster your understanding and application of DSA concepts.",
+        "Access a variety of Competitive Programming resources. These resources will bolster your understanding and application of CP concepts.",
       route: "/dsa-resources",
     },
     {

@@ -1,9 +1,11 @@
+import React from "react";
+
 const Heading = ({ title }) => {
   return (
-    <div className="p-5 md:p-10 flex flex-col items-center">
-      <div className="bg-gray-800 p-6 rounded-lg shadow-lg w-full text-center border border-green-500">
-        <h1 className="text-4xl font-bold text-green-400 ">{title}</h1>
-      </div>
+    <div className="border-4 border-gradient-to-r from-red-600 via-red-700 to-pink-800 rounded-lg p-6 shadow-lg bg-gray-100 mx-4 mb-6 md:mx-10">
+      <h1 className="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-red-500 to-pink-500 text-center">
+        {title}
+      </h1>
     </div>
   );
 };
