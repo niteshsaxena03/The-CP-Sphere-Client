@@ -1,11 +1,22 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Changed to useNavigate
 import CardComponent from "../components/CardComponent";
 import { useFirebase } from "../Firebase/firebaseContext";
 
 const HomePage = () => {
   const navigate = useNavigate(); // Use useNavigate instead of useNavigation
-  const { logOut, isLoggedIn } = useFirebase();
+  const { logOut, isLoggedIn, user } = useFirebase();
+
+  const [userEmail, setUserEmail] = useState(null);
+
+  useEffect(() => {
+    if (user) {
+      console.log(user);
+      setUserEmail(user.email); // Set the email if user is logged in
+    } else {
+      console.log("user not found");
+    }
+  }, [user]);
 
   // Redirect to welcome page if not logged in
   useEffect(() => {
@@ -13,6 +24,8 @@ const HomePage = () => {
       navigate("/"); // Change to your actual welcome page route
     }
   }, [isLoggedIn, navigate]);
+
+  console.log("Current User Email:", userEmail);
 
   const cardData = [
     {
@@ -55,6 +68,7 @@ const HomePage = () => {
 
   return (
     <div className="bg-black min-h-screen p-5 md:p-10 flex flex-col items-center">
+      <h1 className="text-white">{userEmail}</h1> {/* Correctly render the userEmail here */}
       {/* Main Welcome Card */}
       <div className="bg-slate-900 p-10 rounded-lg shadow-lg mb-8 w-full max-w-5xl text-center border border-cyan-500">
         <h1 className="text-4xl md:text-5xl font-bold text-cyan-400 mb-4">
@@ -65,7 +79,6 @@ const HomePage = () => {
           and resources.
         </p>
       </div>
-
       {/* Card Grid */}
       <div className="grid grid-cols-1 gap-6 w-full max-w-4xl">
         {cardData.map((card, index) => (
@@ -77,7 +90,6 @@ const HomePage = () => {
           />
         ))}
       </div>
-
       {/* Logout Button */}
       <div className="mt-8 w-full max-w-xs">
         <button
