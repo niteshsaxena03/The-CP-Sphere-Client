@@ -30,7 +30,7 @@ const HomePage = () => {
       route: "/cp-resources",
     },
     {
-      title: "DSA Resources",
+      title: "CP Resources",
       description:
         "Access a variety of Data Structures and Algorithms resources. From in-depth guides to practice problems, these resources will bolster your understanding and application of DSA concepts.",
       route: "/dsa-resources",
