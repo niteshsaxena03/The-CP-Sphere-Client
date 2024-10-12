@@ -53,8 +53,16 @@ const UnsolvedQuestions = () => {
 
   console.log("Current User Email:", userEmail);
 
-  const addQuestion = ({ question, link }) => {
-    setQuestions([...questions, { question, link }]);
+  const addQuestion = async ({ question, link }) => {
+    try {
+      const response = await api.post(
+        `/api/v1/users/${userEmail}/unsolved-questions`,
+        { question, link }
+      );
+      setQuestions([...questions, response.data.newQuestion]); // Assuming the backend returns the new question
+    } catch (error) {
+      console.error("Error adding question:", error);
+    }
   };
 
   const deleteQuestion = (index) => {
