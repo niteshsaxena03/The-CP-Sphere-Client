@@ -12,7 +12,7 @@ import DiscussionForum from "./pages/DiscussionForum";
 
 import ContactAdmin from "./pages/ContactAdmin";
 import CPLearningResources from "./pages/CPLearningResources";
-import CPPracticeResources from "./pages/CPPracticeResources";
+
 
 function App() {
   return (
@@ -27,7 +27,6 @@ function App() {
       <Route path="/cp-resources" element={<CPResources />} />
       <Route path="/cp-learning-resources" element={<CPLearningResources />} />
       <Route path="/discussion-forum" element={<DiscussionForum />} />
-      <Route path="/practice" element={<CPPracticeResources />} />
       <Route path="/contact-admin" element={<ContactAdmin />} />
     </Routes>
   );

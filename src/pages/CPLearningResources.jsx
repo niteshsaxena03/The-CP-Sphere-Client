@@ -67,6 +67,16 @@ const CPLearningResources = () => {
       href: "https://youtu.be/HL5ouhfxlgk?si=QO6utYJVsliGcPKB",
     },
   ];
+  const BinarySearchResources = [
+    {
+      name: "Priyansh Agarwal",
+      href: "https://www.youtube.com/watch?v=TiQ_W2qG3kU",
+    },
+    {
+      name: "Vivek Gupta",
+      href: "https://maang.in/courses/Binary-Search-85?tab=chapters",
+    },
+  ];
 
   const DPResources = [
     {
@@ -93,12 +103,45 @@ const CPLearningResources = () => {
     },
   ];
 
+  const CSES = [
+    {
+      name: "Topic Wise Practice",
+      href: "https://cses.fi/problemset/",
+    },
+  ];
+
+  const askSenior = [
+    {
+      name: "Topic Wise Practice",
+      href: "https://asksenior.in/learn",
+    },
+  ];
+
+  const progVar = [
+    {
+      name: "Topic Wise Practice",
+      href: "https://progvar.fun/problemsets",
+    },
+  ];
+
+  const TLE = [
+    {
+      name: "Rating Wise Practice",
+      href: "https://www.tle-eliminators.com/cp-sheet",
+    },
+  ];
+  const a2OJ = [
+    {
+      name: "Rating Wise Practice",
+      href: "https://earthshakira.github.io/a2oj-clientside/server/Ladders.html",
+    },
+  ];
+
   return (
     <div className="bg-black min-h-screen p-5">
       <Heading title="CP Learning Resources" />
 
       <ResourceCard topic="Bit Manipulation" resources={bitsResources} />
-
       <ResourceCard topic="Prefix Sum" resources={prefixSumResources} />
       <ResourceCard topic="Number Theory" resources={numberTheoryResources} />
 
@@ -108,6 +151,7 @@ const CPLearningResources = () => {
       />
 
       <ResourceCard topic="Greedy Algorithms" resources={greedyAlgoResources} />
+      <ResourceCard topic="Binary Search" resources={BinarySearchResources} />
       <ResourceCard topic="Dynammic Programming" resources={DPResources} />
       <ResourceCard
         topic="Graph Algorithms"
@@ -115,6 +159,13 @@ const CPLearningResources = () => {
       />
       <ResourceCard topic="Segment Trees" resources={segmentTreeResources} />
       <ResourceCard topic="Trees" resources={TreeResources} />
+
+      <Heading title="CP Practice Resources" />
+      <ResourceCard topic="CSES" resources={CSES} />
+      <ResourceCard topic="ProgVar" resources={progVar} />
+      <ResourceCard topic="TLE 31" resources={TLE} />
+      <ResourceCard topic="Ask Senior" resources={askSenior} />
+      <ResourceCard topic="A2OJ" resources={a2OJ} />
     </div>
   );
 };

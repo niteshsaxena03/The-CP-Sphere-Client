@@ -35,12 +35,7 @@ const HomePage = () => {
         "Access a variety of Competitive Programming resources. These resources will bolster your understanding and application of CP concepts.",
       route: "/cp-learning-resources",
     },
-    {
-      title: "CP Practice Resources",
-      description:
-        "Explore CP Practice Resources for a collection of diverse practice questions. Strengthen your competitive programming skills and improve your problem-solving abilities with challenging exercises.",
-      route: "/practice",
-    },
+
     {
       title: "Discussion Forum",
       description:
@@ -70,7 +65,7 @@ const HomePage = () => {
       </div>
 
       {/* Card Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
+      <div className="grid grid-cols-1  gap-6 w-full max-w-4xl">
         {cardData.map((card, index) => (
           <CardComponent
             key={index}
