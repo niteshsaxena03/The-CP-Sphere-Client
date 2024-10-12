@@ -11,7 +11,7 @@ const HomePage = () => {
 
   useEffect(() => {
     if (user) {
-      console.log(user);
+      //console.log(user);
       setUserEmail(user.email); // Set the email if user is logged in
     } else {
       console.log("user not found");
@@ -25,7 +25,7 @@ const HomePage = () => {
     }
   }, [isLoggedIn, navigate]);
 
-  console.log("Current User Email:", userEmail);
+  //console.log("Current User Email:", userEmail);
 
   const cardData = [
     {
@@ -68,7 +68,7 @@ const HomePage = () => {
 
   return (
     <div className="bg-black min-h-screen p-5 md:p-10 flex flex-col items-center">
-      <h1 className="text-white">{userEmail}</h1> {/* Correctly render the userEmail here */}
+      {/* <h1 className="text-white">{userEmail}</h1>  */}
       {/* Main Welcome Card */}
       <div className="bg-slate-900 p-10 rounded-lg shadow-lg mb-8 w-full max-w-5xl text-center border border-cyan-500">
         <h1 className="text-4xl md:text-5xl font-bold text-cyan-400 mb-4">
