@@ -14,10 +14,9 @@ const UnsolvedQuestions = () => {
 
   useEffect(() => {
     if (user) {
-      //console.log(user);
       setUserEmail(user.email); // Set the email if user is logged in
     } else {
-      console.log("user not found");
+      console.log("User not found");
     }
   }, [user]);
 
@@ -51,8 +50,6 @@ const UnsolvedQuestions = () => {
     fetchUnsolvedQuestions();
   }, [userEmail]);
 
-  console.log("Current User Email:", userEmail);
-
   const addQuestion = async ({ question, link }) => {
     try {
       const response = await api.post(
@@ -65,8 +62,16 @@ const UnsolvedQuestions = () => {
     }
   };
 
-  const deleteQuestion = (index) => {
-    setQuestions(questions.filter((_, i) => i !== index));
+  const deleteQuestion = async (questionName) => {
+    console.log("Deleting question with name:", questionName); // Debugging log
+    try {
+      await api.delete(`/api/v1/users/${userEmail}/unsolved-questions`, {
+        data: { questionName },
+      });
+      setQuestions(questions.filter((item) => item.question !== questionName)); // Filter out the deleted question
+    } catch (error) {
+      console.error("Error deleting question:", error);
+    }
   };
 
   // Function to handle random selection
@@ -95,7 +100,7 @@ const UnsolvedQuestions = () => {
             key={index}
             question={item.question}
             href={item.link}
-            onDelete={() => deleteQuestion(index)}
+            onDelete={() => deleteQuestion(item.question)} // Pass the question name to delete
           />
         ))
       ) : (
