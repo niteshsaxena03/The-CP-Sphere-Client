@@ -14,7 +14,7 @@ const ContestReminders = () => {
     // Define contests and their timings
     const contests = [
       {
-        name: "LeetCode Contest",
+        name: "LeetCode Weekly Contest",
         day: "Sunday",
         time: "08:00:00",
         link: "https://leetcode.com/contest/",
@@ -39,7 +39,7 @@ const ContestReminders = () => {
         link: "https://atcoder.jp/contests/",
       },
       {
-        name: "CodeChef Contest",
+        name: "CodeChef Starters Contest",
         day: "Wednesday",
         time: "20:00:00",
         link: "https://www.codechef.com/contests",
