@@ -5,14 +5,13 @@ import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
 import HomePage from "./pages/HomePage";
 import ContestReminders from "./pages/ContestReminders";
-import UserProfile from "./pages/UserProfile";
+
 import UnsolvedQuestions from "./pages/UnsolvedQuestions";
 import CPResources from "./pages/CPResources";
 import DiscussionForum from "./pages/DiscussionForum";
 import QuestionLogPage from "./pages/QuestionLogPage";
 import ContactAdmin from "./pages/ContactAdmin";
 import CPLearningResources from "./pages/CPLearningResources";
-
 
 function App() {
   return (
@@ -22,7 +21,6 @@ function App() {
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/home" element={<HomePage />} />
       <Route path="/contest-reminders" element={<ContestReminders />} />
-      <Route path="/user-profile" element={<UserProfile />} />
       <Route path="/unsolved-questions" element={<UnsolvedQuestions />} />
       <Route path="/cp-resources" element={<CPResources />} />
       <Route path="/cp-learning-resources" element={<CPLearningResources />} />
