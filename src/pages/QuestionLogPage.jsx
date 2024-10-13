@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Heading from "../components/HeadingComponent";
 import QuestionLogInput from "../components/QuestionLogInput"; // New input component
+import QuestionLogCard from "../components/QuestionLogCard"; // New card component
 import { useNavigate } from "react-router-dom";
 
 const QuestionLogPage = () => {
@@ -19,35 +20,26 @@ const QuestionLogPage = () => {
     setQuestionsLog([...questionsLog, newLog]); // Update state with the new log
   };
 
+  // Function to handle deleting a log
+  const handleDeleteLog = (index) => {
+    const updatedLogs = questionsLog.filter((_, i) => i !== index);
+    setQuestionsLog(updatedLogs); // Update state with the remaining logs
+  };
+
   return (
     <div className="min-h-screen bg-black p-5">
-      <Heading title="Question Log" />
+      <Heading title="Daily Questions Log" />
       <QuestionLogInput onAdd={addQuestionLog} />
 
       {/* Display logged questions */}
       <div className="mt-8">
         {questionsLog.length > 0 ? (
           questionsLog.map((log, index) => (
-            <div
+            <QuestionLogCard
               key={index}
-              className="bg-gray-800 text-white p-5 rounded-lg shadow-lg mb-4"
-            >
-              <h2 className="text-xl font-bold">Name: {log.questionName}</h2>
-              <p>
-                Link:{" "}
-                <a
-                  href={log.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500"
-                >
-                  {log.link}
-                </a>
-              </p>
-              <p>Date Solved: {log.dateSolved}</p>
-              <p>Topic: {log.topic}</p>
-              <p>Learning: {log.learning}</p>
-            </div>
+              log={log}
+              onDelete={() => handleDeleteLog(index)} // Pass the delete function
+            />
           ))
         ) : (
           <p className="text-white font-bold text-2xl text-center">
