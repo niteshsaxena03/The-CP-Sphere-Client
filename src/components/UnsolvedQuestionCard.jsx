@@ -18,7 +18,7 @@ const UnsolvedQuestionCard = ({ question, href, onDelete }) => {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded text-sm md:text-xl" // Adjusted padding and text size for mobile
+          className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded text-sm md:text-base" // Adjusted padding and text size for mobile
           aria-label={`View question: ${question}`} // Accessibility improvement
         >
           View Question
