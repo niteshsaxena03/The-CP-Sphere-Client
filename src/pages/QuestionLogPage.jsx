@@ -1,15 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Heading from "../components/HeadingComponent";
 import QuestionLogInput from "../components/QuestionLogInput"; // New input component
 import QuestionLogCard from "../components/QuestionLogCard"; // New card component
-import { useNavigate } from "react-router-dom";
+import { useFirebase } from "../Firebase/firebaseContext"; // Import your Firebase context
+import api from "../axios"; // Assuming you have an axios instance set up
 
 const QuestionLogPage = () => {
-  const navigate = useNavigate();
+  const { user } = useFirebase(); // Get the current user from Firebase context
   const [questionsLog, setQuestionsLog] = useState([]); // State to store logged questions
 
-  // Dummy function to handle adding a question log
-  const addQuestionLog = ({
+  useEffect(() => {
+    const fetchQuestionLogs = async () => {
+      if (user) {
+        try {
+          const response = await api.get(`/api/v1/users/logs/${user.email}`); // Fetch logs by user email
+          setQuestionsLog(response.data); // Set the fetched question logs
+        } catch (error) {
+          console.error("Error fetching question logs:", error);
+        }
+      }
+    };
+
+    fetchQuestionLogs();
+  }, [user]);
+
+  // Function to handle adding a question log
+  const addQuestionLog = async ({
     questionName,
     link,
     dateSolved,
@@ -17,13 +33,18 @@ const QuestionLogPage = () => {
     learning,
   }) => {
     const newLog = { questionName, link, dateSolved, topic, learning };
-    setQuestionsLog([...questionsLog, newLog]); // Update state with the new log
-  };
 
-  // Function to handle deleting a log
-  const handleDeleteLog = (index) => {
-    const updatedLogs = questionsLog.filter((_, i) => i !== index);
-    setQuestionsLog(updatedLogs); // Update state with the remaining logs
+    try {
+      // Send a POST request to add the new question log
+      await api.post("/api/v1/users/logs", {
+        email: user.email, // Send the user's email
+        ...newLog, // Include the new log data
+      });
+
+      setQuestionsLog([...questionsLog, newLog]); // Update state with the new log
+    } catch (error) {
+      console.error("Error adding question log:", error);
+    }
   };
 
   return (
@@ -35,11 +56,7 @@ const QuestionLogPage = () => {
       <div className="mt-8">
         {questionsLog.length > 0 ? (
           questionsLog.map((log, index) => (
-            <QuestionLogCard
-              key={index}
-              log={log}
-              onDelete={() => handleDeleteLog(index)} // Pass the delete function
-            />
+            <QuestionLogCard key={index} log={log} />
           ))
         ) : (
           <p className="text-white font-bold text-2xl text-center">
