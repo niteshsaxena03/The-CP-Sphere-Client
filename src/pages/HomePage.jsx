@@ -35,6 +35,12 @@ const HomePage = () => {
       route: "/contest-reminders",
     },
     {
+      title: "Question Log",
+      description:
+        "View a log of all the questions you've attempted on our platform. Keep track of your progress and revisit past challenges to improve.",
+      route: "/question-log",
+    },
+    {
       title: "List of Unsolved Questions",
       description:
         "Keep track of the questions you haven't solved yet. This feature allows you to manage your progress, ensuring that you focus on enhancing your skills and tackling challenging problems.",
@@ -58,6 +64,7 @@ const HomePage = () => {
         "Join our vibrant community discussion forum. Engage with fellow programmers, ask questions, share knowledge, and collaborate on problems to improve your skills.",
       route: "/discussion-forum",
     },
+
     {
       title: "Contact Admin",
       description:

@@ -9,7 +9,7 @@ import UserProfile from "./pages/UserProfile";
 import UnsolvedQuestions from "./pages/UnsolvedQuestions";
 import CPResources from "./pages/CPResources";
 import DiscussionForum from "./pages/DiscussionForum";
-
+import QuestionLogPage from "./pages/QuestionLogPage";
 import ContactAdmin from "./pages/ContactAdmin";
 import CPLearningResources from "./pages/CPLearningResources";
 
@@ -28,6 +28,7 @@ function App() {
       <Route path="/cp-learning-resources" element={<CPLearningResources />} />
       <Route path="/discussion-forum" element={<DiscussionForum />} />
       <Route path="/contact-admin" element={<ContactAdmin />} />
+      <Route path="/question-log" element={<QuestionLogPage />} />
     </Routes>
   );
 }
