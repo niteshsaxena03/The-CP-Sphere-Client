@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { format } from "date-fns"; // Importing date-fns for formatting dates
 
 const QuestionLogCard = ({ log, onDelete, userEmail }) => {
+  // Convert the date from ISO format to a more readable format
+  const formattedDate = format(new Date(log.dateSolved), "MMMM dd, yyyy");
+
   const handleDelete = async () => {
     const confirmed = window.confirm(
       `Are you sure you want to delete the log for: "${log.questionName}"?`
@@ -15,7 +18,8 @@ const QuestionLogCard = ({ log, onDelete, userEmail }) => {
       <div className="flex-1">
         <h2 className="text-xl font-bold">{log.questionName}</h2>
         <p className="text-blue-400 font-semibold">{log.topic}</p>
-        <p className="text-gray-300">{log.dateSolved}</p>
+        <p className="text-gray-300">{formattedDate}</p>{" "}
+        {/* Use the formatted date here */}
         <p
           className="mt-2 max-h-32 overflow-y-auto break-words"
           style={{ wordBreak: "break-word", overflowWrap: "break-word" }}
