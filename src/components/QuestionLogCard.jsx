@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-const QuestionLogCard = ({ log, onDelete }) => {
-  const handleDelete = () => {
+const QuestionLogCard = ({ log, onDelete, userEmail }) => {
+  const handleDelete = async () => {
     const confirmed = window.confirm(
       `Are you sure you want to delete the log for: "${log.questionName}"?`
     );
     if (confirmed) {
-      onDelete(); // Call the delete function from the parent
+      await onDelete(userEmail, log.questionName); // Call the delete function with userEmail and questionName
     }
   };
 

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import Heading from "../components/HeadingComponent";
-import QuestionLogInput from "../components/QuestionLogInput"; // New input component
-import QuestionLogCard from "../components/QuestionLogCard"; // New card component
-import { useFirebase } from "../Firebase/firebaseContext"; // Import your Firebase context
-import api from "../axios"; // Assuming you have an axios instance set up
+import QuestionLogInput from "../components/QuestionLogInput";
+import QuestionLogCard from "../components/QuestionLogCard";
+import { useFirebase } from "../Firebase/firebaseContext";
+import api from "../axios";
 
 const QuestionLogPage = () => {
   const { user } = useFirebase(); // Get the current user from Firebase context
@@ -47,6 +47,21 @@ const QuestionLogPage = () => {
     }
   };
 
+  // Function to handle deleting a question log
+  const deleteQuestionLog = async (email, questionName) => {
+    try {
+      await api.delete(`/api/v1/users/logs/${email}`, {
+        data: { questionName },
+      });
+      // Update the state to remove the deleted log
+      setQuestionsLog(
+        questionsLog.filter((log) => log.questionName !== questionName)
+      );
+    } catch (error) {
+      console.error("Error deleting question log:", error);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-black p-5">
       <Heading title="Daily Questions Log" />
@@ -56,7 +71,12 @@ const QuestionLogPage = () => {
       <div className="mt-8">
         {questionsLog.length > 0 ? (
           questionsLog.map((log, index) => (
-            <QuestionLogCard key={index} log={log} />
+            <QuestionLogCard
+              key={index}
+              log={log}
+              onDelete={deleteQuestionLog} // Pass the delete function
+              userEmail={user.email} // Pass the user's email
+            />
           ))
         ) : (
           <p className="text-white font-bold text-2xl text-center">
