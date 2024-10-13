@@ -88,7 +88,7 @@ const QuestionLogInput = ({ onAdd }) => {
           onChange={(e) => setLearning(e.target.value)}
           className="w-full p-3 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:border-cyan-500 text-white"
           placeholder="Enter what you learned"
-          required
+          // required
         />
       </div>
 
