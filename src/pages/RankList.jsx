@@ -19,7 +19,7 @@ const RankList = () => {
         response.data &&
         response.data.contestRating !== undefined
       ) {
-        return Math.round(response.data.contestRating);  // Return the contest rating
+          return Math.round(response.data.contestRating);  // Return the contest rating
       }
 
       console.error(`No contestRating found for ${username}`);
@@ -83,4 +83,5 @@ const RankList = () => {
   );
 };
 
+//feature completed
 export default RankList;

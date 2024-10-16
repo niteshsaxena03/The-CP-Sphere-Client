@@ -14,31 +14,33 @@ const QuestionLogCard = ({ log, onDelete, userEmail }) => {
   };
 
   return (
-    <div className="bg-gray-800 text-white p-5 rounded-lg shadow-lg mb-4 flex justify-between items-start">
-      <div className="flex-1">
-        <h2 className="text-xl font-bold">{log.questionName}</h2>
-        <p className="text-blue-400 font-semibold">{log.topic}</p>
+    <div className="bg-gradient-to-br from-blue-900 to-blue-700 text-white p-6 rounded-lg shadow-xl mb-6 flex flex-col sm:flex-row justify-between items-start transition-transform transform hover:scale-105">
+      <div className="flex-1 mb-4 sm:mb-0">
+        <h2 className="text-2xl font-bold drop-shadow-md">
+          {log.questionName}
+        </h2>
+        <p className="text-amber-400 font-bold">{log.topic}</p>
         <p className="text-gray-300">{formattedDate}</p>{" "}
         {/* Use the formatted date here */}
         <p
-          className="mt-2 max-h-32 overflow-y-auto break-words"
+          className="mt-2 max-h-32 overflow-y-auto break-words text-gray-200"
           style={{ wordBreak: "break-word", overflowWrap: "break-word" }}
         >
           {log.learning}
         </p>
       </div>
-      <div className="flex flex-col space-y-2">
+      <div className="flex flex-col space-y-3">
         <a
           href={log.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+          className="bg-white hover:bg-gray-200 text-gray-800 py-2 px-5 rounded transition duration-300 shadow-md"
         >
           View Question
         </a>
         <button
           onClick={handleDelete}
-          className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
+          className="bg-red-600 hover:bg-red-700 text-white py-2 px-5 rounded transition duration-300 shadow-md"
         >
           Delete
         </button>
