@@ -64,7 +64,12 @@ const HomePage = () => {
         "Join our vibrant community discussion forum. Engage with fellow programmers, ask questions, share knowledge, and collaborate on problems to improve your skills.",
       route: "/discussion-forum",
     },
-
+    {
+      title: "Rank List",
+      description:
+        "The Rank List highlights the LeetCode ratings of fellow users, offering a simple way to track progress, celebrate achievements, and stay inspired by the journey of others in the CP community.",
+      route: "/rank-list",
+    },
     {
       title: "Contact Admin",
       description:

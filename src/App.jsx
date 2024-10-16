@@ -12,6 +12,7 @@ import DiscussionForum from "./pages/DiscussionForum";
 import QuestionLogPage from "./pages/QuestionLogPage";
 import ContactAdmin from "./pages/ContactAdmin";
 import CPLearningResources from "./pages/CPLearningResources";
+import RankList from "./pages/RankList";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       <Route path="/discussion-forum" element={<DiscussionForum />} />
       <Route path="/contact-admin" element={<ContactAdmin />} />
       <Route path="/question-log" element={<QuestionLogPage />} />
+      <Route path="/rank-list" element={<RankList/>}/>
     </Routes>
   );
 }
