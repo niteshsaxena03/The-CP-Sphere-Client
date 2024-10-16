@@ -3,6 +3,7 @@ const RankCard = ({ ranking, username, rating }) => {
   // Construct the URL for the LeetCode profile
   const leetcodeProfileUrl = `https://leetcode.com/u/${username}/`;
 
+  
   return (
     <a
       href={leetcodeProfileUrl}
