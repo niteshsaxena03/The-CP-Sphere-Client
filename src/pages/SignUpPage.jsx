@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Spline from "@splinetool/react-spline";
 import { useFirebase } from "../Firebase/firebaseContext";
@@ -12,6 +12,7 @@ const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [experienceLevel, setExperienceLevel] = useState("");
+  const [leetcodeUsername, setLeetCodeUsername] = useState(""); // New state for LeetCode username
 
   const { signUpUserWithEmailAndPassword, isLoggedIn, user } = useFirebase();
 
@@ -31,19 +32,25 @@ const SignUpPage = () => {
         email,
         password
       );
-      
+
       const firebaseUser = userCredential.user;
 
       // Send user data to the server for storing in MongoDB
       await api.post("/api/v1/users/signup", {
-        // Change the endpoint to match your server
         fullName,
         email: firebaseUser.email, // Use email from Firebase response
         experienceLevel,
         firebaseUid: firebaseUser.uid, // Store Firebase UID for later reference
       });
 
+      // After the user is created, now add the LeetCode username
+      await api.post("/api/v1/leetcode/leetcode-username", {
+        username: leetcodeUsername, // Send the LeetCode username to the backend
+      });
+
       console.log("Signup successful and data saved in MongoDB");
+      // Redirect to home or any other page after successful signup
+      navigate("/home");
     } catch (error) {
       console.error("Error during signup or saving to MongoDB:", error);
     }
@@ -104,6 +111,25 @@ const SignUpPage = () => {
             onChange={(e) => setPassword(e.target.value)} // Update password state
             className="w-full p-3 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-sky-900"
             placeholder="Enter password (minimum 6 letters)"
+            required
+          />
+        </div>
+
+        {/* LeetCode Username Input */}
+        <div className="mb-4">
+          <label
+            className="block text-white text-lg mb-2"
+            htmlFor="leetcodeUsername"
+          >
+            LeetCode Username
+          </label>
+          <input
+            type="text"
+            id="leetcodeUsername"
+            value={leetcodeUsername}
+            onChange={(e) => setLeetCodeUsername(e.target.value)} // Update LeetCode username state
+            className="w-full p-3 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-sky-900"
+            placeholder="Enter your LeetCode username"
             required
           />
         </div>
