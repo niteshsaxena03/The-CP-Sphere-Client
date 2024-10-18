@@ -1,55 +1,54 @@
-import { useState } from "react"; // Import useState to manage state
+import { useState, useEffect } from "react"; // Import useState and useEffect
 import Heading from "../components/HeadingComponent";
 import MessageCard from "../components/MessageCard"; // Import the MessageCard component
+import api from "../axios"; // Import your axios instance
 
 const DiscussionForum = () => {
-  const [messages, setMessages] = useState([
-    {
-      name: "Alice",
-      message: "Hello everyone! Excited to discuss here.",
-      date: "2024-10-18",
-      time: "10:00 AM",
-    },
-    {
-      name: "Bob",
-      message: "Hi Alice! Welcome to the discussion.",
-      date: "2024-10-18",
-      time: "10:05 AM",
-    },
-    {
-      name: "Charlie",
-      message: "What topics are we discussing today?",
-      date: "2024-10-18",
-      time: "10:10 AM",
-    },
-  ]);
-
+  const [messages, setMessages] = useState([]); // Initialize messages state as an empty array
   const [newMessage, setNewMessage] = useState(""); // State for new message input
 
-  const handleSendMessage = () => {
+  // Fetch messages from the backend
+  useEffect(() => {
+    const fetchMessages = async () => {
+      try {
+        const response = await api.get("/api/v1/messages/all-messages"); // Adjust the endpoint as necessary
+        setMessages(response.data.data || []); // Update state with fetched messages
+      } catch (error) {
+        console.error("Error fetching messages:", error);
+      }
+    };
+
+    fetchMessages(); // Call the fetch function
+  }, []); // Empty dependency array means this runs once on mount
+
+  const handleSendMessage = async () => {
     if (newMessage.trim()) {
       const date = new Date();
-      const formattedDate = `${date.getDate()} ${date.toLocaleString(
-        "default",
-        {
-          month: "long",
-        }
-      )} ${date.getFullYear()}`;
+      const formattedDate = date.toISOString(); // Ensure date is in ISO format
       const formattedTime = date.toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
       });
 
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        {
-          name: "You",
-          message: newMessage,
-          date: formattedDate,
-          time: formattedTime,
-        },
-      ]);
-      setNewMessage(""); // Clear the input field
+      const messageData = {
+        name: "You", // Replace with the actual name
+        message: newMessage,
+        date: formattedDate, // Optional, ensure ISO format
+        time: formattedTime,
+      };
+
+      try {
+        const response = await api.post(
+          "/api/v1/messages/new-message",
+          messageData
+        );
+        // Handle success
+        console.log("Message sent successfully:", response.data);
+      } catch (error) {
+        console.error("Error sending message:", error.response.data);
+      }
+
+      setNewMessage(""); // Clear input after sending
     }
   };
 
