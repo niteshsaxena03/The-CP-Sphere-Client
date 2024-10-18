@@ -36,7 +36,7 @@ const WelcomePage = () => {
           </button>
           <button
             className="text-white w-40"
-            onClick={() => navigate("/signup")}
+            onClick={() => navigate("/verify-leetcode")}
           >
             Sign Up
           </button>

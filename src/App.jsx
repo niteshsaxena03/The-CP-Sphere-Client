@@ -13,12 +13,14 @@ import QuestionLogPage from "./pages/QuestionLogPage";
 import ContactAdmin from "./pages/ContactAdmin";
 import CPLearningResources from "./pages/CPLearningResources";
 import RankList from "./pages/RankList";
+import VerifyLeetcode from "./pages/VerifyLeetcode";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<WelcomePage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/verify-leetcode" element={<VerifyLeetcode />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/home" element={<HomePage />} />
       <Route path="/contest-reminders" element={<ContestReminders />} />
@@ -28,7 +30,7 @@ function App() {
       <Route path="/discussion-forum" element={<DiscussionForum />} />
       <Route path="/contact-admin" element={<ContactAdmin />} />
       <Route path="/question-log" element={<QuestionLogPage />} />
-      <Route path="/rank-list" element={<RankList/>}/>
+      <Route path="/rank-list" element={<RankList />} />
     </Routes>
   );
 }
