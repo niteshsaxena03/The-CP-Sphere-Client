@@ -8,31 +8,45 @@ const DiscussionForum = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const { user } = useFirebase();
-  const [currentUserName, setCurrentUserName] = useState("Anonymous"); // State for storing the user's name
+  const [currentUserName, setCurrentUserName] = useState(""); // State for storing the user's name
+  const [isPageVisible, setIsPageVisible] = useState(true); // Track if the page is visible
 
   useEffect(() => {
     const fetchUserName = async () => {
       if (user?.email) {
         try {
-          const response = await api.get(`/api/v1/users/email/${user.email}`);
-          console.log("User fetch response:", response); // Log response
-          if (response.data.success) {
-            // Check for success in the response
-            setCurrentUserName(response.data.data.name); // Set the user's name
-          } else {
-            console.error("Error fetching user name:", response.data.message);
-          }
+          const response = await api.get(`/api/v1/users/email/${user.email}`); // Fetch user by email
+          setCurrentUserName(response.data.data.name); // Set the user's name
         } catch (error) {
           console.error("Error fetching user name:", error);
         }
       }
     };
+
     fetchUserName(); // Call the fetch function initially
   }, [user]); // Run this effect whenever the user changes
+
+  // Handle visibility change (e.g., when switching tabs)
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        setIsPageVisible(false); // If the tab is hidden, stop polling
+      } else {
+        setIsPageVisible(true); // Resume polling if the tab is visible
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
 
   // Fetch messages from the backend
   useEffect(() => {
     const fetchMessages = async () => {
+      console.log("Fetching messages..."); 
       try {
         const response = await api.get("/api/v1/messages/all-messages");
         setMessages(response.data.data || []);
@@ -41,14 +55,19 @@ const DiscussionForum = () => {
       }
     };
 
-    fetchMessages(); // Call the fetch function initially
+    // Fetch messages initially
+    fetchMessages();
 
-    // Set up an interval to fetch messages every second
-    const interval = setInterval(fetchMessages, 1000);
+    // Polling interval (only when page is visible)
+    const interval = setInterval(() => {
+      if (isPageVisible) {
+        fetchMessages(); // Poll for new messages only if page is active
+      }
+    }, 1000); // Poll every second
 
-    // Cleanup function to clear the interval when the component unmounts
+    // Cleanup the interval when the component unmounts
     return () => clearInterval(interval);
-  }, []); // Empty dependency array means this runs once on mount
+  }, [isPageVisible]); // Re-run polling when page visibility changes
 
   const handleSendMessage = async () => {
     if (newMessage.trim()) {
@@ -60,7 +79,7 @@ const DiscussionForum = () => {
       });
 
       const messageData = {
-        name: currentUserName, // Use the current user's name
+        name: currentUserName || "You", // Use the current user's name
         message: newMessage,
         date: formattedDate, // Optional, ensure ISO format
         time: formattedTime,
