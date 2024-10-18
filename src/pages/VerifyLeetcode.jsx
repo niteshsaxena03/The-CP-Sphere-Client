@@ -73,28 +73,28 @@ const VerifyLeetcode = () => {
       <Heading title="LeetCode Profile Verification" />
 
       {/* Instructions */}
-      <div className="mt-8 max-w-2xl bg-gray-800 p-6 rounded-lg shadow-lg">
-        <h2 className="text-xl font-semibold mb-4">
+      <div className="mt-8 max-w-2xl bg-gray-800 p-6 rounded-lg shadow-lg w-full mx-4 md:mx-0">
+        <h2 className="text-xl md:text-2xl font-semibold mb-4">
           Please follow the instructions carefully:
         </h2>
 
         <ul className="list-decimal list-inside space-y-4">
-          <li className="text-lg">
+          <li className="text-md md:text-xl">
             You need to verify your LeetCode profile so that we can assess
             whether you are eligible to join our platform.
           </li>
-          <li className="text-lg">
+          <li className="text-md md:text-xl">
             For verification, go to the settings of your LeetCode profile and
             change your name to{" "}
             <span className="font-bold text-yellow-400">THECPSPHERE</span>.
             After we verify your profile, you can change your name back.
           </li>
-          <li className="text-lg">
+          <li className="text-md md:text-xl">
             Please wait for 5 minutes after changing your name before clicking
             the <span className="font-bold text-yellow-400">Verify</span>{" "}
             button.
           </li>
-          <li className="text-lg">
+          <li className="text-md md:text-xl">
             Click on the{" "}
             <span className="font-bold text-yellow-400">Verify</span> button
             below after you have changed your name, and we will let you know
@@ -127,8 +127,8 @@ const VerifyLeetcode = () => {
 
       {/* Display verification message if available */}
       {verificationMessage && (
-        <div className="mt-8 bg-gray-800 p-4 rounded-lg shadow-lg">
-          <p className="text-lg">{verificationMessage}</p>
+        <div className="mt-8 bg-gray-800 p-4 rounded-lg shadow-lg w-full mx-4 md:mx-0">
+          <p className="text-lg md:text-xl">{verificationMessage}</p>
         </div>
       )}
     </div>
