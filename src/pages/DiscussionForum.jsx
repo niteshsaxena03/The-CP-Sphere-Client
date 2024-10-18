@@ -1,18 +1,41 @@
-import { useState, useEffect } from "react"; // Import useState and useEffect
+import { useState, useEffect } from "react";
 import Heading from "../components/HeadingComponent";
-import MessageCard from "../components/MessageCard"; // Import the MessageCard component
-import api from "../axios"; // Import your axios instance
+import MessageCard from "../components/MessageCard";
+import api from "../axios";
+import { useFirebase } from "../Firebase/firebaseContext";
 
 const DiscussionForum = () => {
-  const [messages, setMessages] = useState([]); // Initialize messages state as an empty array
-  const [newMessage, setNewMessage] = useState(""); // State for new message input
+  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState("");
+  const { user } = useFirebase();
+  const [currentUserName, setCurrentUserName] = useState("Anonymous"); // State for storing the user's name
+
+  useEffect(() => {
+    const fetchUserName = async () => {
+      if (user?.email) {
+        try {
+          const response = await api.get(`/api/v1/users/email/${user.email}`);
+          console.log("User fetch response:", response); // Log response
+          if (response.data.success) {
+            // Check for success in the response
+            setCurrentUserName(response.data.data.name); // Set the user's name
+          } else {
+            console.error("Error fetching user name:", response.data.message);
+          }
+        } catch (error) {
+          console.error("Error fetching user name:", error);
+        }
+      }
+    };
+    fetchUserName(); // Call the fetch function initially
+  }, [user]); // Run this effect whenever the user changes
 
   // Fetch messages from the backend
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        const response = await api.get("/api/v1/messages/all-messages"); // Adjust the endpoint as necessary
-        setMessages(response.data.data || []); // Update state with fetched messages
+        const response = await api.get("/api/v1/messages/all-messages");
+        setMessages(response.data.data || []);
       } catch (error) {
         console.error("Error fetching messages:", error);
       }
@@ -21,7 +44,7 @@ const DiscussionForum = () => {
     fetchMessages(); // Call the fetch function initially
 
     // Set up an interval to fetch messages every second
-    const interval = setInterval(fetchMessages, 1000); // 1000 milliseconds = 1 second
+    const interval = setInterval(fetchMessages, 1000);
 
     // Cleanup function to clear the interval when the component unmounts
     return () => clearInterval(interval);
@@ -30,14 +53,14 @@ const DiscussionForum = () => {
   const handleSendMessage = async () => {
     if (newMessage.trim()) {
       const date = new Date();
-      const formattedDate = date.toISOString(); // Ensure date is in ISO format
+      const formattedDate = date.toISOString();
       const formattedTime = date.toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
       });
 
       const messageData = {
-        name: "You", // Replace with the actual name
+        name: currentUserName, // Use the current user's name
         message: newMessage,
         date: formattedDate, // Optional, ensure ISO format
         time: formattedTime,
