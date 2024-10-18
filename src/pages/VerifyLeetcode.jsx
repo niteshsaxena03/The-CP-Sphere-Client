@@ -1,7 +1,9 @@
 import { useState } from "react";
 import Heading from "../components/HeadingComponent";
+import { useNavigate } from "react-router-dom";
 
 const VerifyLeetcode = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [verificationMessage, setVerificationMessage] = useState(""); // State to hold verification message
   const [error, setError] = useState(""); // State to hold error messages
@@ -24,9 +26,34 @@ const VerifyLeetcode = () => {
 
       // Check if the user's name is "THECPSPHERE"
       if (data.name === "THECPSPHERE") {
-        setVerificationMessage(
-          "Verification successful! This ID belongs to you."
+        // Fetch contest data
+        const contestResponse = await fetch(
+          `https://alfa-leetcode-api.onrender.com/${username}/contest`
         );
+        if (!contestResponse.ok) {
+          throw new Error("Failed to fetch contest data.");
+        }
+        const contestData = await contestResponse.json();
+
+        // Check eligibility
+        if (contestData.contestParticipation.length === 0) {
+          setVerificationMessage(
+            "You are not eligible to join out platform"
+          );
+        } else {
+          const userRating = contestData.contestRating;
+          if (userRating < 1300) {
+            setVerificationMessage(
+              "You are not eligible to join our platform"
+            );
+          } else {
+            setVerificationMessage(
+              "Congratulations! You are eligible to join our platform"
+            );
+            alert("Congratulations! You are eligible to join."); // Window alert for eligibility
+            navigate("/signup"); // Navigate to signup route
+          }
+        }
         setError(""); // Clear error if verification is successful
       } else {
         setVerificationMessage(
