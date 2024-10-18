@@ -18,7 +18,13 @@ const DiscussionForum = () => {
       }
     };
 
-    fetchMessages(); // Call the fetch function
+    fetchMessages(); // Call the fetch function initially
+
+    // Set up an interval to fetch messages every second
+    const interval = setInterval(fetchMessages, 1000); // 1000 milliseconds = 1 second
+
+    // Cleanup function to clear the interval when the component unmounts
+    return () => clearInterval(interval);
   }, []); // Empty dependency array means this runs once on mount
 
   const handleSendMessage = async () => {
