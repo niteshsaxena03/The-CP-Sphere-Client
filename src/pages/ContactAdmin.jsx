@@ -4,8 +4,8 @@ const ContactAdmin = () => {
   return (
     <div className="bg-black min-h-screen flex flex-col items-center justify-center p-5">
       {/* Title Section */}
-      <div className="bg-gray-800 p-10 rounded-lg shadow-lg w-full max-w-md text-center">
-        <h2 className="text-4xl text-green-400 font-bold mb-6">
+      <div className="bg-gray-800 p-5 md:p-10 rounded-lg shadow-lg w-full max-w-md text-center">
+        <h2 className="text-3xl md:text-4xl text-green-400 font-bold mb-4">
           Contact Admin
         </h2>
         <h3 className="text-2xl text-white mb-4">
@@ -13,7 +13,7 @@ const ContactAdmin = () => {
         </h3>
 
         {/* Social Media Links Section */}
-        <div className="space-y-4">
+        <div className="flex flex-col space-y-4">
           {/* Email Card */}
           <ContactCard
             href="mailto:niteshsaxena03@gmail.com"
