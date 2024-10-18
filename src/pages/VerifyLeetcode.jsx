@@ -50,7 +50,7 @@ const VerifyLeetcode = () => {
             setVerificationMessage(
               "Congratulations! You are eligible to join our platform"
             );
-            alert("Congratulations! You are eligible to join."); // Window alert for eligibility
+            alert("Congratulations! You are eligible to join out platform"); // Window alert for eligibility
             navigate("/signup"); // Navigate to signup route
           }
         }
