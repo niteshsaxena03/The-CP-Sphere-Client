@@ -14,7 +14,7 @@ const QuestionLogCard = ({ log, onDelete, userEmail }) => {
   };
 
   return (
-    <div className="bg-gradient-to-br from-blue-900 to-blue-700 text-white p-6 rounded-lg shadow-xl mb-6 flex flex-col sm:flex-row justify-between items-start transition-transform transform hover:scale-105">
+    <div className="bg-gradient-to-br from-blue-900 to-blue-700 text-white p-6 rounded-lg shadow-xl mb-6 flex flex-row sm:flex-row justify-between items-start transition-transform transform hover:scale-105">
       <div className="flex-1 mb-4 sm:mb-0">
         <h2 className="text-2xl font-bold drop-shadow-md">
           {log.questionName}
