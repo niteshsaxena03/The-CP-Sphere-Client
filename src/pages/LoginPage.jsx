@@ -103,7 +103,7 @@ const LoginPage = () => {
         <div className="text-white mt-6 text-center">
           Don't have an account?{" "}
           <span
-            onClick={() => navigate("/signup")}
+            onClick={() => navigate("/verify-leetcode")}
             className="text-sky-400 hover:underline cursor-pointer"
           >
             Sign up
